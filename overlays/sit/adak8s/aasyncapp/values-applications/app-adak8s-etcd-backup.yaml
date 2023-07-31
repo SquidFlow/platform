@@ -1,0 +1,12 @@
+name: adak8s-etcd-backup
+tenant:
+  name: adak8s
+tool:
+  autosync: true
+  name: argocd
+  namespace: adak8s-system
+  repo:
+    basepath: /apps/base
+    overlaypath: /apps/overlay
+    ref: sit
+    url: ssh://git@github.com:22/SquidFlow/manifest.git
