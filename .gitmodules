@@ -1,0 +1,3 @@
+[submodule "manifest"]
+	path = manifest
+	url = ssh://git@localhost:7999/ad/manifest.git
