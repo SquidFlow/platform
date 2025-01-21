@@ -6,7 +6,7 @@ tool:
   name: argocd
   namespace: adak8s-system
   repo:
-    basepath: /apps/base
-    overlaypath: /apps/overlay
+    basepath: ../../../../etcd-backup
+    overlaypath: overlays/sit/adak8s/etcd-backup
     ref: sit
     url: ssh://git@github.com:22/SquidFlow/manifest.git
