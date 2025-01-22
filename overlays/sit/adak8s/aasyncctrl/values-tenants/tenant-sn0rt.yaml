@@ -2,9 +2,9 @@ name: sn0rt
 description: sn0rt Project
 sourceRepos:
 - repo: ssh://git@example.com/biz.git
-appCode: APP001
-pcCode: PC001
-lobt: LOB001
+appCode: APP003
+pcCode: PC003
+lobt: LOB003
 poc: john.doe@example.com
 ownedNamespaces:
 - name: adak8s-system
