@@ -1,0 +1,10 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: adak8s-etcd-backup
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: adak8s-etcd-backup:latest

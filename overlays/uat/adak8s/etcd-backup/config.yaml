@@ -1,0 +1,6 @@
+sit:
+  ingress:
+    name: ${ARGOCD_ENV_TOOLNAME}
+uat:
+  ingress:
+    name: ${ARGOCD_ENV_TOOLNAME}

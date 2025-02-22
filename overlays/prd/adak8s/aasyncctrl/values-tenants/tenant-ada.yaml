@@ -1,0 +1,65 @@
+name: ada
+description: Test Project
+sourceRepos:
+  - repo: ssh://git@example.com/biz.git
+  - repo: ssh://git@example.com/biz2.git
+  - repo: ssh://git@example.com/biz3.git
+scc:
+  - system::serviceaccount:adak8s:adak8s-system:adak8s-system
+  - system::serviceaccount:monitoring:monitoring
+appCode: APP001
+pcCode: PC001
+lobt: LOB001
+poc: john.doe@example.com
+ownedNamespaces:
+  - name: adak8s-system
+    istio: true
+    sidecar: true
+  - name: ada-main
+    istio: true
+    enableYuniKorn: true
+    childQueue: true
+    quota:
+      cpu: 10
+      memory: 10Gi
+    childQueueDetails:
+      - name: ada-main-queue
+        quota:
+          cpu: 10
+          memory: 10Gi
+  - name: ada-amlp
+    appCode: AMLP
+    poc: jane.doe@example.com
+    istio: true
+    enableYuniKorn: true
+    childQueue: true
+    quota:
+      cpu: 10
+      memory: 10Gi
+      pvc: 5
+      ephemeralStorage: 20Gi
+    childQueueDetails:
+      - name: default
+        quota:
+          cpu: 1
+          memory: 20Gi
+      - name: ada-amlp-queue
+        quota:
+          cpu: 10
+          memory: 10Gi
+          pod: 100
+          pvc: 5
+          storage: 20Gi
+  - name: ada-amlp-queue-2
+    appCode: AMLP2
+    poc: jane.doe@example.com
+    istio: true
+    ingress:
+      - directAccess: true
+        name: istio-ingress
+        port: 80
+        service: istio-ingress-service
+      - directAccess: true
+        name: istio-ingress
+        port: 80
+        service: istio-ingress-service

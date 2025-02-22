@@ -1,0 +1,38 @@
+name: adak8s
+description: Test Project
+sourceRepos:
+- repo: ssh://git@example.com/biz.git
+- repo: '*'
+ssc:
+  - system::serviceaccount:adak8s:worker
+  - system::serviceaccount:adak8s:controller
+  - system::serviceaccount:adak8s:adak8s-system:adak8s-system
+  - system::serviceaccount:monitoring:monitoring
+appCode: APP002
+pcCode: PC002
+lobt: LOB002
+poc: john.doe@example.com
+ownedNamespaces:
+  - name: adak8s-system
+    istio: true
+    sidecar: true
+  - name: awx-operator
+    istio: true
+    ingress:
+      - directAccess: true
+        name: awx
+        port: 80
+        service: awx-operator-service
+  - name: adak8s
+    istio: true
+  - name: istio-system
+    istio: true
+    ingress:
+      - directAccess: true
+        name: jaeger
+        port: 16686
+        service: jaeger-query
+      - directAccess: true
+        name: kiali
+        port: 20001
+        service: kiali
